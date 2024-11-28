@@ -1,0 +1,59 @@
+<!-- #####################################################################################################
+#
+#   Name: Abhishek Dilipkumar Nale
+#   
+#   Original:   
+#   Date: 28/11/2024
+#
+#   Question 3: Create an HTML form for Login and write a JavaScript to validate email ID using Regular Expression.
+###################################################################################################### -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Program_3</title>
+
+    <script>
+        function validate(event)
+        {
+            // gather data
+            let mail = document.getElementById("mail").value.trim();
+
+            // regex pattern to validate mail id
+            let pattern = /^[a-zA-Z0-9./_%+-]+@[a-zA-Z0-9._+-]+\.[a-z]{2,}$/
+
+            // mail validation
+            if(!pattern.test(mail)||mail==="")
+            {
+                alert("Invalid format of Email\nCorect format is: LocalDomain@Domain.TLD")
+                event.preventDefault()
+                return false
+            }
+            
+            // data valid
+            alert("Form Submitted with valid Mail Id")
+            return true
+        }
+    </script>
+</head>
+<body>
+    <form align="center" onSubmit="validate(event)">
+        <br>
+        <h2>Login</h2>
+        <br>
+        <div>
+            <label for="n">Name:</label>
+            <input type="text" name="name" id="n" required>
+            <br><br>
+            <label for="mail">Email Id:</label>
+            <input type="text" name="mailId" id="mail">
+        </div>
+        <br>
+        <div>
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+</body>
+</html>
