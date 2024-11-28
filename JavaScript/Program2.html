@@ -15,7 +15,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Program2</title>
+    <title>Program_2</title>
     
     <script>
         function validate(event)
@@ -25,6 +25,7 @@
             var jd = document.getElementById("jd").value.trim();
             var salary = parseInt(document.getElementById("salary").value);
 
+            // validation (Required Boxes)
             if(dob===""||jd===""||isNaN(salary))
             {
                 alert("All boxes are required");
@@ -32,7 +33,10 @@
                 return false;
             }
 
+            // Pattern to validate date format
             let pattern = /^([0][1-9]|[12][0-9]|[3][012])[\/\-]([0][1-9]|[1][012])[\/\-]\d{4}$/;
+
+            // Date validation
             if (!pattern.test(dob) || !pattern.test(jd))
             {
                 alert("Invalid Dates.\nDates must be in the format of DD/MM/YYYY or DD-MM-YYYY");
@@ -40,6 +44,7 @@
                 return false;
             }
 
+            // salary validation
             if(salary<0)
             {
                 alert("Salary cannot be a negative number");
@@ -47,6 +52,7 @@
                 return false;
             }
 
+            // whole data is valid
             alert("Form Submited with Validated Dates");
             return true;
 
