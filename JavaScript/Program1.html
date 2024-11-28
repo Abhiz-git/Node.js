@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Program_1: Validate</title>
+    <script>
+        function validate(event)
+        {
+            // Get the values of the inputs
+            let fn = document.getElementById("fname").value.trim();
+            let ln = document.getElementById("lname").value.trim();
+            let age = document.getElementById("age").value.trim();
+
+            // Validation checks
+            if (fn === "" || ln === "" || age === "")
+            {
+                alert("Please fill every box.");
+                event.preventDefault();  // Prevent form submission
+                return false;
+            }
+
+            // Regular expressions for validation
+            let pattern = /^[A-Za-z]+$/;  // Only alphabets
+            let pat2 = /^[0-9]*$/;       // Only numbers
+
+            // Validate name
+            if (!pattern.test(fn) || !pattern.test(ln)) 
+            {
+                alert("First Name and Last Name must contain only alphabets.");
+                event.preventDefault();  // Prevent form submission
+                return false;
+            }
+
+            // Validate age
+            if (!pat2.test(age)) 
+            {
+                alert("Age must be a valid number.");
+                event.preventDefault();  // Prevent form submission
+                return false;
+            }
+            else if (age < 18 || age >50 )
+            {
+                alert("Age must be between 18 to 50");
+                event.preventDefault();
+                return false;
+            }
+
+            // If everything is valid
+            alert("Form submitted successfully!");
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <br>
+    <form align="center" onsubmit="return validate(event);">
+        <h2>Registration Form</h2>
+        <div>
+            <label for="fname">First Name</label>
+            <input type="text" name="first_name" id="fname" placeholder="Enter your first name">
+        </div>
+        <br>
+        <div>
+            <label for="lname">Last Name</label>
+            <input type="text" name="last_name" id="lname" placeholder="Enter your last name">
+        </div>
+        <br>
+        <div>
+            <label for="age">Age</label>
+            <input type="text" name="num" id="age" placeholder="Enter your age">
+        </div>
+        <br>
+        <div>
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+</body>
+</html>

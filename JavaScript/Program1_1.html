@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Program1_1</title>
+
+    <script>
+        
+        function validate(event)
+        {
+            let fn = document.getElementById("fname").value.trim();
+            let ln = document.getElementById("lname").value.trim();
+            let age = parseInt(document.getElementById("age").value); // parsing age in Integer no need to check either a number
+
+            let pattern = /^[A-Za-z]+$/;    // only alphabets
+
+            // validation(all boxes required)
+            if( fn ==="" || ln ==="" || isNaN(age)) 
+            {
+                alert("All boxes are Required");
+                event.preventDefault();
+                return false;
+            }
+
+            // if(validation(Both name matches pattern and age is between range)) -> True
+            if( pattern.test(fn) && pattern.test(ln) && age>=18 && age<=50)
+            {
+                alert("Form Successfully Submitted ...!");
+                return true;
+            }
+
+            else
+            {
+                alert("Check First Name and Last Name contains only alphabets\nAge contains only Numbers between 18 to 50");
+                event.preventDefault();
+                return false;
+            }
+
+        }
+    </script>
+</head>
+<body>
+    <form align="center" onsubmit ="return validate(event);">
+        <br>
+        <h2>Registration Form</h2>
+        <div>
+            First Name <input type="text" name="fname" id="fname" placeholder="Enter your First Name here">
+            <br><br>
+            Last Name <input type="text" name="lname" id="lname" placeholder="Enter your Last Name here">
+            <br><br>
+            Age <input type="text" name="age" id="age" placeholder="Enter you age here">
+        </div>
+        <br>
+        <div>
+            <button type="submit">Submit</button>
+        </div>
+
+    </form>
+    
+</body>
+</html>
