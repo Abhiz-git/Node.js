@@ -1,0 +1,88 @@
+<!-- #####################################################################################################
+#
+#   Name: Abhishek Dilipkumar Nale
+#   
+#   Original:   
+#   Date: 28/11/2024
+#
+#   Question 2: Create an HTML form that contain the Employee Registration details 
+#               and write a JavaScript to validate DOB, Joining Date, and Salary. 
+###################################################################################################### -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Program2</title>
+    
+    <script>
+        function validate(event)
+        {
+            // data gathering
+            var dob = document.getElementById("dob").value.trim();
+            var jd = document.getElementById("jd").value.trim();
+            var salary = parseInt(document.getElementById("salary").value);
+
+            if(dob===""||jd===""||isNaN(salary))
+            {
+                alert("All boxes are required");
+                event.preventDefault();
+                return false;
+            }
+
+            let pattern = /^([0][1-9]|[12][0-9]|[3][012])[\/\-]([0][1-9]|[1][012])[\/\-]\d{4}$/;
+            if (!pattern.test(dob) || !pattern.test(jd))
+            {
+                alert("Invalid Dates.\nDates must be in the format of DD/MM/YYYY or DD-MM-YYYY");
+                event.preventDefault();
+                return false;
+            }
+
+            if(salary<0)
+            {
+                alert("Salary cannot be a negative number");
+                event.preventDefault();
+                return false;
+            }
+
+            alert("Form Submited with Validated Dates");
+            return true;
+
+        }
+
+    </script>
+</head>
+<body>
+    <form align="center" onsubmit="return validate(event)">
+        <br>
+        <h2>Employee Registration Details</h2>
+        <br>
+        <div>
+            <label for="name">Name</label>
+            <input type="text" name="name" id="name" required>
+        </div>
+        <br>
+        <div>
+            <label for="dob">Date_of_Birth</label>
+            <input type="text" name="dob" id="dob">
+            <br><br>
+            <label for="jd">Joining_Date</label>
+            <input type="text" name="jd" id="jd">
+        </div>
+        <br>
+        <div>
+            <label for="salary">Salary</label>
+            <input type="text" name="salary" id="salary">
+            <br><br>
+
+            <button type="submit">Submit</button>
+
+        </div>
+
+
+    </form>
+    
+</body>
+</html>
