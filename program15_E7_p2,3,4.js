@@ -20,7 +20,7 @@ conn.connect(function(err){
         "INSERT INTO student(rno,name,address) VALUES ((1,'abhi','phaltan'), (2,'avi','rajisthan'))"
     ]
 
-    querry.forEach(query => {
+    querry.forEach(querry => {
         conn.query(querry, function(err,result){
             if(err)
             {
